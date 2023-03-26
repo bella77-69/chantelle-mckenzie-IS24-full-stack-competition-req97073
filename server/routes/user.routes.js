@@ -18,10 +18,10 @@ const getUsersData = () => {
   return JSON.parse(jsonData);
 };
 
-const getShortId = () => {
-    return uuidv4().split("-")[0];
+const generateShortId = () => {
+  const id = Math.floor(Math.random() * 40) + 1;
+  return id.toString();
 };
-
 
 /*
  * Routes
@@ -71,9 +71,7 @@ router.post("/", (req, res) => {
     methodology,
   } = req.body;
   const usersData = getUsersData();
-  const { v4: uuidv4 } = require("uuid"); // Generate a random productId using the uuid module
-  const productId = uuidv4(); // Create a new user object with the provided data and generated productId
-  
+  const productId = generateShortId(); 
   const newUser = {
     productId,
     productName,

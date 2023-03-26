@@ -1,0 +1,39 @@
+.table-responsive {
+    margin: 0 auto;
+    width: 100%;
+    padding: 0;
+    border-collapse: collapse;
+}
+
+.table-responsive Td .TdBefore {
+    display: none;
+}
+
+th {
+    background-color: #4CAF50;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+tr {
+    border: 1px solid #000;
+    padding: .125rem;
+    display: table-row;
+}
+
+th {
+    border: 1px solid #000;
+    padding: .125rem;
+    display: table-cell;
+    padding: .1875rem;
+}
+
+td {
+    border: 1px solid #000;
+    padding: .125rem;
+    display: table-cell;
+    padding: 1em;
+}
