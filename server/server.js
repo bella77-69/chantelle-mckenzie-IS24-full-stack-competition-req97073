@@ -1,9 +1,8 @@
 const express = require("express");
 require("dotenv").config();
 const app = express();
-const bodyParser = require("body-parser");
 const cors = require("cors");
-
+const userRoutes = require("./routes/user.routes");
 const PORT = process.env.PORT;
 
 /**
@@ -11,8 +10,6 @@ const PORT = process.env.PORT;
  */
 app.use(express.json());
 app.use(cors());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json());
 
 /**
  * Routes
@@ -20,6 +17,8 @@ app.use(bodyParser.json());
 app.get("/api", (req, res) => {
   res.send("Hello welcome to the API");
 });
+
+app.use('/api', userRoutes);
 
 /**
  * Server
