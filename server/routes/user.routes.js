@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const fs = require("fs");
+const { v4: uuidv4 } = require("uuid");
 
 const dataPath = "./data/users.json";
 
@@ -16,6 +17,11 @@ const getUsersData = () => {
   const jsonData = fs.readFileSync(dataPath);
   return JSON.parse(jsonData);
 };
+
+const getShortId = () => {
+    return uuidv4().split("-")[0];
+};
+
 
 /*
  * Routes
@@ -67,6 +73,7 @@ router.post("/", (req, res) => {
   const usersData = getUsersData();
   const { v4: uuidv4 } = require("uuid"); // Generate a random productId using the uuid module
   const productId = uuidv4(); // Create a new user object with the provided data and generated productId
+  
   const newUser = {
     productId,
     productName,
