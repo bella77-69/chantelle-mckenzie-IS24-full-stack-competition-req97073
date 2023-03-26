@@ -37,11 +37,11 @@ router.get("/", (req, res) => {
 });
 
 /*
- * GET /api/users/:id
+ * GET /api/users/:userId
  * Returns a single user
  * */
-router.get("/:id", (req, res) => {
-  const productId = req.params.id; // Get the user ID from the request parameters
+router.get("/:userId", (req, res) => {
+  const productId = req.params.userId; // Get the user ID from the request parameters
   const usersData = getUsersData(); // Get the user data from the JSON file
   const user = usersData.users.find((user) => user.productId === productId); // Find the user with the matching ID
   if (!user) {
@@ -82,12 +82,12 @@ router.post("/", (req, res) => {
 });
 
 /*
- * PUT /api/users/:id
+ * PUT /api/users/:userId
  * Updates a user
  * */
-router.put("/:id", (req, res) => {
+router.put("/:userId", (req, res) => {
   const usersData = getUsersData();
-  const userId = req.params.id;
+  const userId = req.params.userId;
   // Find the user to update
   const userToUpdate = usersData.users.find(
     (user) => user.productId === userId
@@ -109,11 +109,11 @@ router.put("/:id", (req, res) => {
 });
 
 /*
- * DELETE /api/users/:id
+ * DELETE /api/users/:UserId
  * Deletes a user
  * */
-router.delete("/:id", (req, res) => {
-  const id = req.params.id;
+router.delete("/:userId", (req, res) => {
+  const id = req.params.userId;
   let usersData = getUsersData();
   // Find index of user with matching productId
   const index = usersData.users.findIndex((user) => user.productId === id);
