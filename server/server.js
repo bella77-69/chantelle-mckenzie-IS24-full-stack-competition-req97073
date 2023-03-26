@@ -18,7 +18,7 @@ app.get("/api", (req, res) => {
   res.send("Hello welcome to the API");
 });
 
-app.use('/api', userRoutes);
+app.use('/api/users', userRoutes);
 
 /**
  * Server
