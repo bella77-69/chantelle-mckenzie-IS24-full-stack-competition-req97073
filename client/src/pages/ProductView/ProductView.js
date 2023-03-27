@@ -6,7 +6,7 @@ function ProductView(props) {
     productName: "",
     scrumMasterName: "",
     productOwnerName: "",
-    Developers: "",
+    Developers: ["", "", "", "", ""],
     startDate: "",
     methodology: "",
     successMessage: null,
@@ -20,13 +20,21 @@ function ProductView(props) {
     }));
   };
 
+  const handleDeveloperChange = (index, value) => {
+    setAddProduct((prevAddProduct) => {
+      const developers = [...prevAddProduct.Developers];
+      developers[index] = value;
+      return { ...prevAddProduct, Developers: developers };
+    });
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
     const data = {
       productName: addProduct.productName,
       scrumMasterName: addProduct.scrumMasterName,
       productOwnerName: addProduct.productOwnerName,
-      Developers: addProduct.Developers.join(', '),
+      Developers: addProduct.Developers,
       startDate: addProduct.startDate,
       methodology: addProduct.methodology,
     };
@@ -85,14 +93,24 @@ function ProductView(props) {
           />
 
           <label htmlFor="Developers">Developers</label>
-          <textarea
+          {addProduct.Developers.map((developer, index) => (
+            <input
+              key={index}
+              type="text"
+              className="form-control"
+              placeholder={`Enter Developer ${index + 1}`}
+              value={developer}
+              onChange={(e) => handleDeveloperChange(index, e.target.value)}
+            />
+          ))}
+          {/* <textarea
             className="form-control"
             id="Developers"
             placeholder="Enter Developers (separated by new line)"
             value={addProduct.Developers}
             onChange={handleChange}
             rows="5"
-          />
+          /> */}
 
           <label htmlFor="startDate">Start Date</label>
           <input

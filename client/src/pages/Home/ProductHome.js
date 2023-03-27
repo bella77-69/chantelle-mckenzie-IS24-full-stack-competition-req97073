@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
 import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
-import "./productHome.css";
+import "./productHome.scss";
 
 function ProductHome(props) {
   const [user, setUser] = useState([]);
@@ -16,36 +16,32 @@ function ProductHome(props) {
   }, []);
 
   return (
-    <div className="container">
-      <div className="row mx-4">
-        <h2 className="h2 text-center mb-4 mt-3">IMB</h2>
-      </div>
+    <div className="product table">
       <h3 className="h3 text-center mb-4 mt-3">Product List</h3>
       <div className="table-responsive">
         <Table>
-          <Thead>
+          <Thead className='table-header'>
             <Tr>
-              <Th>Product #</Th>
-              <Th>Product Name</Th>
-              <Th>Scrum Master</Th>
-              <Th>Product Owner</Th>
-              <Th>Developers</Th>
+              <Th className='table-header'>Product #</Th>
+              <Th className='table-header'>Product Name</Th>
+              <Th className='table-header'>Scrum Master</Th>
+              <Th className='table-header'>Product Owner</Th>
+              <Th className='table-header'>Developers</Th>
 
-              <Th>Start Date</Th>
-              <Th>Methodology</Th>
+              <Th className='table-header'>Start Date</Th>
+              <Th className='table-header'>Methodology</Th>
             </Tr>
           </Thead>
           <Tbody>
             {user.map((user) => (
               <Tr key={user.productId}>
-                <Td>{user.productId}</Td>
-                <Td>{user.productName}</Td>
-                <Td>{user.scrumMasterName}</Td>
-                <Td>{user.productOwnerName}</Td>
-                {/* <Td>{user.Developers.join(",")}</Td> */}
-                <Td>{user.Developers}</Td>
-                <Td>{user.startDate}</Td>
-                <Td>{user.methodology}</Td>
+                <Td className='table-data'>{user.productId}</Td>
+                <Td className='table-data'>{user.productName}</Td>
+                <Td className='table-data'>{user.scrumMasterName}</Td>
+                <Td className='table-data'>{user.productOwnerName}</Td>
+                <Td className='table-data table-developer'>{user.Developers.join(",")}</Td>
+                <Td className='table-data'>{user.startDate}</Td>
+                <Td className='table-data'>{user.methodology}</Td>
               </Tr>
             ))}
           </Tbody>

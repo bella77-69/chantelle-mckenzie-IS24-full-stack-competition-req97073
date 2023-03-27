@@ -1,0 +1,32 @@
+/**
+    * Media Breakpoints
+    * 
+    * @description: Media breakpoints for mobile
+**/
+@mixin mobile {
+    @media screen and (max-width: 767px) {
+      @content;
+    }
+}
+
+/**
+    * Media Breakpoints
+    * 
+    * @description: Media breakpoints for tablet
+**/
+@mixin tablet {
+    @media screen and (min-width: 768px) {
+      @content;
+    }
+}
+
+/**
+    * Media Breakpoints
+    * 
+    * @description: Media breakpoints for desktop
+**/
+@mixin desktop {
+  @media screen and (min-width: 1280px) {
+    @content;
+    }
+}

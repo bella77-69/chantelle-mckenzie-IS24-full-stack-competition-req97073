@@ -52,7 +52,7 @@ function ProductList(props) {
               <td>{user.productName}</td>
               <td>{user.scrumMasterName}</td>
               <td>{user.productOwnerName}</td>
-              <td>{user.Developers}</td>
+              <td>{user.Developers.join(' , ')}</td>
               <td>{user.startDate}</td>
               <td>{user.methodology}</td>
               <td>
