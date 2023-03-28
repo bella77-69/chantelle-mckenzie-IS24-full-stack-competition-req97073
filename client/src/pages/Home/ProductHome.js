@@ -4,13 +4,13 @@ import "react-super-responsive-table/dist/SuperResponsiveTableStyle.css";
 import "./productHome.scss";
 
 function ProductHome(props) {
-  const [user, setUser] = useState([]);
+  const [product, setProduct] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:8000/api/users")
+    fetch("http://localhost:8000/api/products")
       .then((response) => response.json())
       .then((data) => {
-        setUser(data.users);
+        setProduct(data.products);
       })
       .catch((error) => console.log(`Error: ${error}`));
   }, []);
@@ -33,15 +33,15 @@ function ProductHome(props) {
             </Tr>
           </Thead>
           <Tbody>
-            {user.map((user) => (
-              <Tr key={user.productId}>
-                <Td className='table-data'>{user.productId}</Td>
-                <Td className='table-data'>{user.productName}</Td>
-                <Td className='table-data'>{user.scrumMasterName}</Td>
-                <Td className='table-data'>{user.productOwnerName}</Td>
-                <Td className='table-data table-developer'>{user.Developers.join(",")}</Td>
-                <Td className='table-data'>{user.startDate}</Td>
-                <Td className='table-data'>{user.methodology}</Td>
+            {product.map((product) => (
+              <Tr key={product.productId}>
+                <Td className='table-data'>{product.productId}</Td>
+                <Td className='table-data'>{product.productName}</Td>
+                <Td className='table-data'>{product.scrumMasterName}</Td>
+                <Td className='table-data'>{product.productOwnerName}</Td>
+                <Td className='table-data table-developer'>{product.Developers.join(",")}</Td>
+                <Td className='table-data'>{product.startDate}</Td>
+                <Td className='table-data'>{product.methodology}</Td>
               </Tr>
             ))}
           </Tbody>

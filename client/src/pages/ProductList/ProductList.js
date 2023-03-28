@@ -4,16 +4,16 @@ import { useHistory } from "react-router-dom";
 
 
 function ProductList(props) {
-  const [user, setUser] = useState([]);
+  const [product, setProduct] = useState([]);
   const editProduct = (productId) => {
     props.history.push(`/${productId}`);
   };
   const deleteProduct = (productId) => {
-    axios.delete(`http://localhost:8000/api/users/${productId}`).then((res) => {
+    axios.delete(`http://localhost:8000/api/products/${productId}`).then((res) => {
       console.log(res);
       console.log(res.data);
       if (res.data === 200) {
-        setUser((prevAddProduct) => ({
+        setProduct((prevAddProduct) => ({
           ...prevAddProduct,
           successMessage: "Product deleted successfully",
         }));
@@ -23,10 +23,10 @@ function ProductList(props) {
     });
   };
   useEffect(() => {
-    fetch("http://localhost:8000/api/users")
+    fetch("http://localhost:8000/api/products")
       .then((response) => response.json())
       .then((data) => {
-        setUser(data.users);
+        setProduct(data.products);
       })
       .catch((error) => console.log(`Error: ${error}`));
   }, []);
@@ -47,24 +47,24 @@ function ProductList(props) {
           </tr>
         </thead>
         <tbody>
-          {user.map((user) => (
-            <tr key={user.productId}>
-              <td>{user.productName}</td>
-              <td>{user.scrumMasterName}</td>
-              <td>{user.productOwnerName}</td>
-              <td>{user.Developers.join(' , ')}</td>
-              <td>{user.startDate}</td>
-              <td>{user.methodology}</td>
+          {product.map((product) => (
+            <tr key={product.productId}>
+              <td>{product.productName}</td>
+              <td>{product.scrumMasterName}</td>
+              <td>{product.productOwnerName}</td>
+              <td>{product.Developers.join(' , ')}</td>
+              <td>{product.startDate}</td>
+              <td>{product.methodology}</td>
               <td>
                 <button
                   className="btn btn-primary"
-                  onClick={() => editProduct(user.productId)}
+                  onClick={() => editProduct(product.productId)}
                 >
                   Edit
                 </button>
                 <button
                   className="btn btn-danger"
-                  onClick={() => deleteProduct(user.productId)}
+                  onClick={() => deleteProduct(product.productId)}
                 >
                   Delete
                 </button>

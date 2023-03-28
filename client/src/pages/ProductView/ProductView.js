@@ -40,7 +40,7 @@ function ProductView(props) {
     };
 
     axios
-      .post("http://localhost:8000/api/users", data)
+      .post("http://localhost:8000/api/products", data)
       .then((res) => {
         console.log(res);
         console.log(res.data);

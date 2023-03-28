@@ -9,10 +9,10 @@ function EditProduct(props) {
   const startDate = useRef(null);
   const methodology = useRef(null);
   const [editResult, setEditResult] = useState(null);
-  const { userId } = props.match.params;
+  const { productId } = props.match.params;
 
   useEffect(() => {
-    fetch(`http://localhost:8000/api/users/${userId}`)
+    fetch(`http://localhost:8000/api/products/${productId}`)
       .then((res) => res.json())
       .then((result) => {
         setProducts(result);
@@ -32,7 +32,7 @@ function EditProduct(props) {
       startDate: startDate.current.value,
       methodology: methodology.current.value,
     };
-    fetch(`http://localhost:8000/api/users/${userId}`, {
+    fetch(`http://localhost:8000/api/products/${productId}`, {
       method: "PUT",
       headers: {
         "Content-Type": "application/json",

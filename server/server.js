@@ -2,7 +2,7 @@ const express = require("express");
 require("dotenv").config();
 const app = express();
 const cors = require("cors");
-const userRoutes = require("./routes/user.routes");
+const productRoutes = require("./routes/product.routes");
 const PORT = process.env.PORT;
 
 /**
@@ -18,7 +18,7 @@ app.get("/api", (req, res) => {
   res.send("Hello welcome to the API");
 });
 
-app.use('/api/users', userRoutes);
+app.use('/api/products', productRoutes);
 
 /**
  * Server
