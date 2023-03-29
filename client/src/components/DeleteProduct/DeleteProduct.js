@@ -11,7 +11,7 @@ function DeleteProduct(props) {
       .delete(`http://localhost:8000/api/products/${productId}`)
       .then((res) => {
         console.log(res);
-        console.log(res.data);
+
         setSuccessMessage("Product deleted successfully");
         window.location.href = "/product-list";
       })
@@ -19,7 +19,6 @@ function DeleteProduct(props) {
   };
 
   const handleCancel = () => {
-    props.history.goBack();
     window.location.href = "/product-list";
   };
 

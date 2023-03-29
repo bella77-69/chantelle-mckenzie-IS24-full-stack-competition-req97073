@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import './productView.scss';
 
 function ProductView(props) {
   const [addProduct, setAddProduct] = useState({
@@ -100,9 +101,11 @@ function ProductView(props) {
   };
 
   return (
-    <div className="container product-list">
-      Product List Page
+    <div className="container product">
+      <h3 className="h3 text-center mb-4 mt-3">Add Product</h3>
+      <div className="container">
       <form className="form" onSubmit={handleSubmit}>
+      
         <div className="form-group">
           <label htmlFor="productName">Product Name</label>
           <input
@@ -192,8 +195,11 @@ function ProductView(props) {
 
           <span className="success-message">{addProduct.successMessage}</span>
         </div>
+       
       </form>
     </div>
+    </div>
+   
   );
 }
 

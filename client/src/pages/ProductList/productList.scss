@@ -11,10 +11,20 @@
 
 .btn-danger {
     padding: 0 1rem;
+    width: 100%;
 
+    &:hover {
+        background-color: $color-red;
+        color: $color-primary;
+    }
 }
 
 .btn-primary {
     padding: 0 1rem;
+    width: 100%;
 
+    &:hover {
+        background-color: $color-blue;
+        color: $color-primary;
+    }
 }

@@ -26,7 +26,7 @@ function ProductList(props) {
 
   return (
     <div className="product table">
-      <h3 className="h3 text-center mb-4 mt-3">Product List</h3>
+      <h3 className="h3 text-center mb-4 mt-3">Edit / Delete Product</h3>
       <div className="table-responsive">
       <Table>
         <Thead className="table-header">

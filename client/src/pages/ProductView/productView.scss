@@ -1,0 +1,36 @@
+@media (min-width: 768px) {
+    .form {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center
+    }
+    
+    .form-group {
+      flex-basis: calc(50% - 1rem);
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    
+    .form-group input {
+      width: 100%;
+    }
+  }
+  
+  /* Style the form for screens smaller than 768px */
+  @media (max-width: 767px) {
+    .form-group {
+      margin-bottom: 1rem;
+    }
+    
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+    
+    .form-group input {
+      width: 100%;
+    }
+  }
