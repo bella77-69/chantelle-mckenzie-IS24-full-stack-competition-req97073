@@ -1,3 +1,4 @@
+@import './mixins.scss';
 /**
 Colors
 **/
@@ -5,3 +6,32 @@ $color-primary: #11111f;
 $color-primary-light: #2bd2c2;
 $color-secondary: #e8e8ec;
 $color-secondary-light: #ffffff;
+
+/**
+Table
+**/
+.table-responsive {
+  overflow-x: auto;
+  padding: 0 1rem;
+  width: 100%;
+ 
+
+  @include desktop {
+    padding: 0 6rem;
+    width: 100%;
+    margin: 0 auto;
+  }
+}
+
+Table {
+  border: .0625rem solid $color-primary;
+
+}
+
+Th {
+  background-color: $color-primary-light;
+}
+
+tr:hover {
+  background-color: $color-secondary;
+}

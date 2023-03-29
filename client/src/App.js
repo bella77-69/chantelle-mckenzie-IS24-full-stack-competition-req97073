@@ -5,6 +5,7 @@ import Home from './pages/Home/ProductHome';
 import ProductView from './pages/ProductView/ProductView';
 import ProductList from './pages/ProductList/ProductList';
 import EditProduct from './components/EditProduct/EditProdcut';
+import DeleteProduct from './components/DeleteProduct/DeleteProduct';
 
 
 function App() {
@@ -15,7 +16,8 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route exact path='/product-view' component={ProductView} />
         <Route exact path='/product-list' component={ProductList} />
-        <Route exact path='/:userId' component={EditProduct} />
+        <Route exact path='/edit/:productId' component={EditProduct} />
+        <Route exact path='/delete/:productId' component={DeleteProduct} />
       </Switch>
     </Router>
   );

@@ -1,27 +1,20 @@
 import React, { useState, useEffect } from "react";
-import axios from "axios";
-import { useHistory } from "react-router-dom";
+import { Table, Thead, Tbody, Tr, Th, Td } from "react-super-responsive-table";
+import './productList.scss';
 
 
 function ProductList(props) {
   const [product, setProduct] = useState([]);
+
+
   const editProduct = (productId) => {
-    props.history.push(`/${productId}`);
+    window.location.href = `/edit/${productId}`;
   };
+
   const deleteProduct = (productId) => {
-    axios.delete(`http://localhost:8000/api/products/${productId}`).then((res) => {
-      console.log(res);
-      console.log(res.data);
-      if (res.data === 200) {
-        setProduct((prevAddProduct) => ({
-          ...prevAddProduct,
-          successMessage: "Product deleted successfully",
-        }));
-        console.log("Product deleted successfully");
-        window.location.href = "/product-list";
-      }
-    });
+    window.location.href = `/delete/${productId}`;
   };
+
   useEffect(() => {
     fetch("http://localhost:8000/api/products")
       .then((response) => response.json())
@@ -32,47 +25,53 @@ function ProductList(props) {
   }, []);
 
   return (
-    <div className="container product-list">
-      <h1>Product List</h1>
-      <table className="table table-striped">
-        <thead>
-          <tr>
-            <th>Product Name</th>
-            <th>Scrum Master</th>
-            <th>Product Owner</th>
-            <th>Developers</th>
-            <th>Start Date</th>
-            <th>Methodology</th>
-            <th>Actions</th>
-          </tr>
-        </thead>
-        <tbody>
+    <div className="product table">
+      <h3 className="h3 text-center mb-4 mt-3">Product List</h3>
+      <div className="table-responsive">
+      <Table>
+        <Thead className="table-header">
+          <Tr>
+            <Th>Product Name</Th>
+            <Th>Scrum Master</Th>
+            <Th>Product Owner</Th>
+            <Th>Developers</Th>
+            <Th>Start Date</Th>
+            <Th>Methodology</Th>
+            <Th>Actions</Th>
+          </Tr>
+        </Thead>
+        <Tbody>
           {product.map((product) => (
-            <tr key={product.productId}>
-              <td>{product.productName}</td>
-              <td>{product.scrumMasterName}</td>
-              <td>{product.productOwnerName}</td>
-              <td>{product.Developers.join(' , ')}</td>
-              <td>{product.startDate}</td>
-              <td>{product.methodology}</td>
-              <td>
-                <button
-                  className="btn btn-primary"
-                  onClick={() => editProduct(product.productId)}
-                >
-                  Edit
-                </button>
+            <Tr key={product.productId}>
+              <Td>{product.productName}</Td>
+              <Td>{product.scrumMasterName}</Td>
+              <Td>{product.productOwnerName}</Td>
+              <Td>{product.Developers}</Td>
+              <Td>{product.startDate}</Td>
+              <Td>{product.methodology}</Td>
+              <Td>
+           <div className="btn-row">
                 <button
                   className="btn btn-danger"
                   onClick={() => deleteProduct(product.productId)}
                 >
                   Delete
                 </button>
-              </td>
-            </tr>
+                </div>
+                <div className="btn-row">
+                <button
+                  className="btn btn-primary"
+                  onClick={() => editProduct(product.productId)}
+                >
+                  Edit
+                </button>
+                </div>
+              </Td>
+            </Tr>
           ))}
-        </tbody>
-      </table>
+        </Tbody>
+      </Table>
+      </div>
     </div>
   );
 }

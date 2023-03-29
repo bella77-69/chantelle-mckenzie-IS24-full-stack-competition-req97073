@@ -18,7 +18,7 @@ function EditProduct(props) {
         setProducts(result);
         console.log(result);
       });
-  }, []);
+  }, [productId]);
 
   console.log(products);
 
@@ -43,7 +43,7 @@ function EditProduct(props) {
       .then((result) => {
         setEditResult(result);
       });
-    window.location.href = `/product-view-list`;
+    window.location.href = `/product-list`;
   };
 
   const clearPutOutput = (e) => {
@@ -52,15 +52,15 @@ function EditProduct(props) {
     console.log(editResult);
   };
 
-  const backToDashboard = (e) => {
+  const backToList= (e) => {
     e.preventDefault();
-    window.location.href = "/product-view-list";
+    window.location.href = "/product-list";
   };
 
   return (
     <div className="content">
-      <h2>Admin Dashboard</h2>
-      <button onClick={(e) => backToDashboard(e)} className="btn btn-primary">
+      <h2>Edit Product</h2>
+      <button onClick={(e) => backToList(e)} className="btn btn-primary">
         Back to Product List
       </button>
       <div className="text-center mt-5">

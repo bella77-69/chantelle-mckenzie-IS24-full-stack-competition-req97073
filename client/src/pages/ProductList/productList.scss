@@ -1,0 +1,20 @@
+@import '../../styles/_variables.scss';
+@import '../../styles/_mixins.scss';
+@import '../../styles/_global.scss';
+
+
+.btn-row {
+    display: flex;
+    flex-direction: column;
+    padding: 0 0 1rem;
+}
+
+.btn-danger {
+    padding: 0 1rem;
+
+}
+
+.btn-primary {
+    padding: 0 1rem;
+
+}
