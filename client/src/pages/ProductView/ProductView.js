@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import './productView.scss';
+import "./productView.scss";
 
 function ProductView(props) {
   const [addProduct, setAddProduct] = useState({
@@ -104,102 +104,106 @@ function ProductView(props) {
     <div className="container product">
       <h3 className="h3 text-center mb-4 mt-3">Add Product</h3>
       <div className="container">
-      <form className="form" onSubmit={handleSubmit}>
-      
-        <div className="form-group">
-          <label htmlFor="productName">Product Name</label>
-          <input
-            type="text"
-            className={`form-control ${errors.productName && "is-invalid"}`}
-            id="productName"
-            placeholder="Enter Product Name"
-            value={addProduct.productName}
-            onChange={handleChange}
-          />
-          {errors.productName && (
-            <span className="invalid-feedback">{errors.productName}</span>
-          )}
-
-          <label htmlFor="scrumMasterName">Scrum Master Name</label>
-          <input
-            type="text"
-            className={`form-control ${errors.scrumMasterName && "is-invalid"}`}
-            id="scrumMasterName"
-            placeholder="Enter Scrum Master Name"
-            value={addProduct.scrumMasterName}
-            onChange={handleChange}
-          />
-          {errors.productName && (
-            <span className="invalid-feedback">{errors.scrumMasterName}</span>
-          )}
-
-          <label htmlFor="productOwnerName">Product Owner Name</label>
-          <input
-            type="text"
-            className={`form-control ${
-              errors.productOwnerName && "is-invalid"
-            }`}
-            id="productOwnerName"
-            placeholder="Enter Product Owner Name"
-            value={addProduct.productOwnerName}
-            onChange={handleChange}
-          />
-          {errors.productName && (
-            <span className="invalid-feedback">{errors.productOwnerName}</span>
-          )}
-
-          <label htmlFor="Developers">Developers</label>
-          {addProduct.Developers.map((developer, index) => (
+        <form className="form" onSubmit={handleSubmit}>
+          <div className="form-group">
+            <label htmlFor="productName">Product Name</label>
             <input
-              key={index}
               type="text"
-              className={`form-control ${errors.Developers && "is-invalid"}`}
-              placeholder={`Enter Developer ${index + 1}`}
-              value={developer}
-              onChange={(e) => handleDeveloperChange(index, e.target.value)}
+              className={`form-control ${errors.productName && "is-invalid"}`}
+              id="productName"
+              placeholder="Enter Product Name"
+              value={addProduct.productName}
+              onChange={handleChange}
             />
-          ))}
-          {errors.Developers && (
-            <span className="invalid-feedback">{errors.Developers}</span>
-          )}
+            {errors.productName && (
+              <span className="invalid-feedback">{errors.productName}</span>
+            )}
 
-          <label htmlFor="startDate">Start Date</label>
-          <input
-            type="text"
-            className={`form-control ${errors.startDate && "is-invalid"}`}
-            id="startDate"
-            placeholder="Enter Start Date"
-            value={addProduct.startDate}
-            onChange={handleChange}
-          />
-          {errors.startDate && (
-            <span className="invalid-feedback">{errors.startDate}</span>
-          )}
+            <label htmlFor="scrumMasterName">Scrum Master Name</label>
+            <input
+              type="text"
+              className={`form-control ${
+                errors.scrumMasterName && "is-invalid"
+              }`}
+              id="scrumMasterName"
+              placeholder="Enter Scrum Master Name"
+              value={addProduct.scrumMasterName}
+              onChange={handleChange}
+            />
+            {errors.productName && (
+              <span className="invalid-feedback">{errors.scrumMasterName}</span>
+            )}
 
-          <label htmlFor="methodology">Methodology</label>
-          <input
-            type="text"
-            className={`form-control ${errors.methodology && "is-invalid"}`}
-            id="methodology"
-            placeholder="Enter Methodology"
-            value={addProduct.methodology}
-            onChange={handleChange}
-          />
-          {errors.productName && (
-            <span className="invalid-feedback">{errors.methodology}</span>
-          )}
+            <label htmlFor="productOwnerName">Product Owner Name</label>
+            <input
+              type="text"
+              className={`form-control ${
+                errors.productOwnerName && "is-invalid"
+              }`}
+              id="productOwnerName"
+              placeholder="Enter Product Owner Name"
+              value={addProduct.productOwnerName}
+              onChange={handleChange}
+            />
+            {errors.productName && (
+              <span className="invalid-feedback">
+                {errors.productOwnerName}
+              </span>
+            )}
 
-          <button type="submit" className="btn btn-primary">
-            Submit
-          </button>
+            <label htmlFor="Developers">Developers</label>
+            {addProduct.Developers.map((developer, index) => (
+              <input
+                key={index}
+                type="text"
+                className={`form-control form-developers ${
+                  errors.Developers && "is-invalid"
+                }`}
+                placeholder={`Enter Developer ${index + 1}`}
+                value={developer}
+                onChange={(e) => handleDeveloperChange(index, e.target.value)}
+              />
+            ))}
+            {errors.Developers && (
+              <span className="invalid-feedback">{errors.Developers}</span>
+            )}
 
-          <span className="success-message">{addProduct.successMessage}</span>
-        </div>
-       
-      </form>
+            <label htmlFor="startDate">Start Date</label>
+            <input
+              type="text"
+              className={`form-control ${errors.startDate && "is-invalid"}`}
+              id="startDate"
+              placeholder="Enter Start Date"
+              value={addProduct.startDate}
+              onChange={handleChange}
+            />
+            {errors.startDate && (
+              <span className="invalid-feedback">{errors.startDate}</span>
+            )}
+
+            <label htmlFor="methodology">Methodology</label>
+            <input
+              type="text"
+              className={`form-control ${errors.methodology && "is-invalid"}`}
+              id="methodology"
+              placeholder="Enter Methodology"
+              value={addProduct.methodology}
+              onChange={handleChange}
+            />
+            {errors.productName && (
+              <span className="invalid-feedback">{errors.methodology}</span>
+            )}
+
+            <div className="form-button">
+              <button type="submit" className="btn-add">
+                Submit
+              </button>
+            </div>
+            <span className="success-message">{addProduct.successMessage}</span>
+          </div>
+        </form>
+      </div>
     </div>
-    </div>
-   
   );
 }
 

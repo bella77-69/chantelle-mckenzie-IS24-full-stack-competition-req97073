@@ -39,7 +39,7 @@ function ProductHome(props) {
                 <Td>{product.scrumMasterName}</Td>
                 <Td>{product.productOwnerName}</Td>
                 <Td className="table-developer">
-                  {product.Developers.join(",")}
+                  {product.Developers}
                 </Td>
                 <Td>{product.startDate}</Td>
                 <Td>{product.methodology}</Td>

@@ -6,11 +6,11 @@
 .btn-row {
     display: flex;
     flex-direction: column;
-    padding: 0 0 1rem;
+    align-items: flex-end;
+    padding: 0 0 0.25rem;
 }
 
 .btn-danger {
-    padding: 0 1rem;
     width: 100%;
 
     &:hover {
@@ -20,11 +20,67 @@
 }
 
 .btn-primary {
-    padding: 0 1rem;
     width: 100%;
 
     &:hover {
         background-color: $color-blue;
         color: $color-primary;
+    }
+}
+
+.product.table {
+    font-size: 1rem;
+}
+
+@media (max-width: 768px) {
+    .product.table {
+        font-size: .875rem;
+    }
+
+    .btn {
+        font-size: .875rem;
+    }
+}
+
+@media (max-width: 576px) {
+    .product.table {
+        font-size: .75rem;
+    }
+
+    .btn {
+        font-size: .75rem;
+        margin: 0;
+    }
+}
+
+.table-responsive {
+    overflow-x: auto;
+}
+
+.btn-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.btn {
+    margin: .1875rem;
+    padding: 0.25rem 1rem;
+    border-radius: .3125rem;
+}
+
+.btn-danger {
+    background-color: $color-red;
+    color: $color-secondary-light;
+}
+
+.btn-primary {
+    background-color: $color-blue;
+    color: $color-secondary-light;
+}
+
+@media (max-width: 768px) {
+    .btn-row {
+        flex-direction: column;
     }
 }

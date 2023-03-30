@@ -18,7 +18,7 @@ const getProductsData = () => {
 };
 
 const generateShortId = () => {
-  const id = Math.floor(Math.random() * 40) + 1;
+  const id = Math.floor(Math.random() * 1000) + 1;
   return id.toString();
 };
 
