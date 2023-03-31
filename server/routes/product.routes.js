@@ -30,46 +30,15 @@ const generateShortId = () => {
  * @swagger
  * /api/products:
  *   get:
- *     summary: Get all products
+ *     summary: Get a list of products
  *     description: Retrieve a list of all products.
  *     responses:
  *       200:
- *         description: A list of products.
- *         content:
- *           application/json:
- *             schema:
- *               type: array
- *               items:
- *                 type: object
- *                 properties:
- *                   productId:
- *                     type: string
- *                     example: "15"
- *                     description: The ID of the product.
- *                   productName:
- *                     type: string
- *                     example: "Product 40"
- *                     description: The name of the product.
- *                   productOwnerName:
- *                     type: string
- *                     example: "Dylan Brooks"
- *                     description: The name of the product owner.
- *                   scrumMasterName:
- *                     type: string
- *                     example: "Keith Croteau"
- *                     description: The name of the scrum master.
- *                   startDate:
- *                     type: string
- *                     example: "02/13/2023"
- *                     description: The start date of the product.
- *                   methodology:
- *                     type: string
- *                     example: "Agile"
- *                     description: The methodology used for the product development.
- *                   Developers:
- *                     type: array
- *                     example: ["Janice Lim","Robin Carroll","Sheri Plourde","Marcus Lord","Drew Beck"]
- *                     description: The list of developers working on the product.
+ *         description: A list of all products.
+ *       400:
+ *        description: Error reading file.
+ *     tags:
+ *       - Products
  */
 router.get("/products", (req, res) => {
   fs.readFile("./data/products.json", "utf8", (err, data) => {

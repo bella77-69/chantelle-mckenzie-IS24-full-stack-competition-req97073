@@ -21,7 +21,7 @@ function ProductHome(props) {
     <div className="product table">
       <h3 className="h3 text-center mb-4 mt-3">IMB Product List</h3>
       <div className="table-responsive">
-      <p>Total Products: {totalProducts}</p> {/* Add this line */}
+        <p>Total Products: {totalProducts}</p>
         <Table>
           <Thead className="table-header">
             <Tr>
