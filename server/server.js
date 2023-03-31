@@ -1,5 +1,7 @@
 const express = require("express");
 require("dotenv").config();
+const swaggerJsdoc = require("swagger-jsdoc");
+const swaggerUi = require("swagger-ui-express");
 const app = express();
 const cors = require("cors");
 const productRoutes = require("./routes/product.routes");
@@ -14,11 +16,28 @@ app.use(cors());
 /**
  * Routes
  */
-app.get("/api", (req, res) => {
-  res.send("Hello welcome to the API");
-});
 
-app.use('/api/products', productRoutes);
+const swaggerOptions = {
+  definition: {
+    openapi: "3.0.0",
+    info: {
+      title: "My API",
+      version: "1.0.0",
+      description: "API IS24-full-stack-competition-req97073",
+    },
+    servers: [
+      {
+        url: `http://localhost:${PORT}`,
+      },
+    ],
+  },
+  apis: ["./routes/*.js"],
+};
+const swaggerDocs = swaggerJsdoc(swaggerOptions);
+
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocs));
+
+app.use("/api", productRoutes);
 
 /**
  * Server

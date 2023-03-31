@@ -28,10 +28,10 @@ export default function Header() {
                 Home
               </NavLink>
               <NavLink href="/product-list" className="nav-bar">
-                Product List
+                Manage Product
               </NavLink>
               <NavLink href="/product-view" className="nav-bar">
-                Product View
+                Add Product
               </NavLink>
             </Nav>
           </Navbar.Collapse>

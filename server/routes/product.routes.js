@@ -25,12 +25,53 @@ const generateShortId = () => {
 /*
  * Routes
  */
-
-/*
- * GET /api/products
- * Returns all products
- * */
-router.get("/", (req, res) => {
+/**
+/**
+ * @swagger
+ * /api/products:
+ *   get:
+ *     summary: Get all products
+ *     description: Retrieve a list of all products.
+ *     responses:
+ *       200:
+ *         description: A list of products.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 properties:
+ *                   productId:
+ *                     type: string
+ *                     example: "15"
+ *                     description: The ID of the product.
+ *                   productName:
+ *                     type: string
+ *                     example: "Product 40"
+ *                     description: The name of the product.
+ *                   productOwnerName:
+ *                     type: string
+ *                     example: "Dylan Brooks"
+ *                     description: The name of the product owner.
+ *                   scrumMasterName:
+ *                     type: string
+ *                     example: "Keith Croteau"
+ *                     description: The name of the scrum master.
+ *                   startDate:
+ *                     type: string
+ *                     example: "02/13/2023"
+ *                     description: The start date of the product.
+ *                   methodology:
+ *                     type: string
+ *                     example: "Agile"
+ *                     description: The methodology used for the product development.
+ *                   Developers:
+ *                     type: array
+ *                     example: ["Janice Lim","Robin Carroll","Sheri Plourde","Marcus Lord","Drew Beck"]
+ *                     description: The list of developers working on the product.
+ */
+router.get("/products", (req, res) => {
   fs.readFile("./data/products.json", "utf8", (err, data) => {
     const productsData = JSON.parse(data);
     if (err) {
@@ -41,27 +82,62 @@ router.get("/", (req, res) => {
   });
 });
 
-/*
- * GET /api/products/:productId
- * Returns a single product
- * */
-router.get('/:productId', (req, res) => {
-  const productsId = req.params.productId; 
+/**
+ * @swagger
+ * /api/products/{productId}:
+ *   get:
+ *     summary: Get a product by ID
+ *     description: Retrieve a single product by its ID.
+ *     parameters:
+ *       - in: path
+ *         name: productId
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: The ID of the product to retrieve.
+ *     responses:
+ *       200:
+ *         description: The requested product.
+ *
+ *       404:
+ *         description: Product not found.
+ *     tags:
+ *       - Products
+ */
+router.get("/products/:productId", (req, res) => {
+  const productsId = req.params.productId;
   const productData = getProductsData(); // Get the product ID from the request parameters
-  const product = productData.products.find((product) => product.productId === productsId); // Find the product with the matching ID
+  const product = productData.products.find(
+    (product) => product.productId === productsId
+  ); // Find the product with the matching ID
   if (!product) {
-    res.status(404).send('Product not found'); // Return a 404 error if the product is not found
+    res.status(404).send("Product not found"); // Return a 404 error if the product is not found
   } else {
     res.json(product); // Return the prduct data
   }
 });
 
-
-/*
- * POST /api/products
- * Creates a new product
- * */
-router.post("/", (req, res) => {
+/**
+ * @swagger
+ * /api/products:
+ *   post:
+ *     summary: Create a new product
+ *     description: Create a new product with the given information.
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/NewProduct'
+ *     responses:
+ *       201:
+ *         description: The created product.
+ *       400:
+ *         description: Invalid request body.
+ *     tags:
+ *       - Products
+ */
+router.post("/products", (req, res) => {
   const {
     productName,
     productOwnerName,
@@ -71,7 +147,7 @@ router.post("/", (req, res) => {
     methodology,
   } = req.body;
   const productsData = getProductsData();
-  const productId = generateShortId(); 
+  const productId = generateShortId();
   const newProduct = {
     productId,
     productName,
@@ -85,12 +161,32 @@ router.post("/", (req, res) => {
   saveProductsData(productsData); // Save the updated product data to the JSON file
   res.status(201).json(newProduct); // Return the new product object as the response
 });
-
-/*
- * PUT /api/products/:productId
- * Updates a product
- * */
-router.put("/:productId", (req, res) => {
+/**
+ * @swagger
+ * /api/products/{productId}:
+ *   put:
+ *     summary: Update a product by ID
+ *     description: Update an existing product with the given information by ID.
+ *     parameters:
+ *       - name: productId
+ *         in: path
+ *         description: ID of the product to update.
+ *         required: true
+ *         schema:
+ *           type: string
+ *     requestBody:
+ *       required: true
+ *     responses:
+ *       200:
+ *         description: The updated product.
+ *       400:
+ *         description: Invalid request body or product ID.
+ *       404:
+ *         description: Product not found.
+ *     tags:
+ *       - Products
+ */
+router.put("/products/:productId", (req, res) => {
   const productsData = getProductsData();
   const productId = req.params.productId;
   // Find the product to update
@@ -112,16 +208,37 @@ router.put("/:productId", (req, res) => {
     res.status(200).send("product updated successfully");
   }
 });
+/**
+ * @swagger
+ * /api/products/{productId}:
+ *   delete:
+ *     summary: Delete a product by ID
+ *     description: Delete an existing product with the given ID.
+ *     parameters:
+ *       - name: productId
+ *         in: path
+ *         description: ID of the product to delete.
+ *         required: true
+ *         schema:
+ *           type: string
+ *     responses:
+ *       204:
+ *         description: Product successfully deleted.
+ *       400:
+ *         description: Invalid product ID.
+ *       404:
+ *         description: Product not found.
+ *     tags:
+ *       - Products
+ */
 
-/*
- * DELETE /api/products/:productId
- * Deletes a product
- * */
-router.delete("/:productId", (req, res) => {
+router.delete("/products/:productId", (req, res) => {
   const id = req.params.productId;
   let productsData = getProductsData();
   // Find index of user with matching productId
-  const index = productsData.products.findIndex((product) => product.productId === id);
+  const index = productsData.products.findIndex(
+    (product) => product.productId === id
+  );
 
   if (index !== -1) {
     productsData.products.splice(index, 1); // Remove product from array

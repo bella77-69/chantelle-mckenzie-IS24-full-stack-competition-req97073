@@ -4,7 +4,7 @@ import Nav from './components/Nav/Nav';
 import Home from './pages/Home/ProductHome';
 import ProductView from './pages/ProductView/ProductView';
 import ProductList from './pages/ProductList/ProductList';
-import EditProduct from './components/EditProduct/EditProdcut';
+import EditProduct from './components/EditProduct/EditProduct';
 import DeleteProduct from './components/DeleteProduct/DeleteProduct';
 
 
