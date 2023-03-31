@@ -1,13 +1,19 @@
+<h1 align="center">
 # Chantelle Mckenzie - IS24-full-stack-competition-req97073
+</h1>
 
+<p align="left">
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+</p>
 
 ## Description
 
 IS-24 Full Stack Code Challenge Req 97073
 
 ## Installation
+<p align='left'>
 To install the dependencies for the full stack React.js application, follow the steps below:
+</p>
 
 Clone the repository to your local machine using the following command:
 git clone <https://github.com/bella77-69/chantelle-mckenzie-IS24-full-stack-competition-req97073>
