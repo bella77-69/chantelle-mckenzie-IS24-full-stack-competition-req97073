@@ -41,7 +41,11 @@ function ProductHome(props) {
                 <Td>{product.productName}</Td>
                 <Td>{product.scrumMasterName}</Td>
                 <Td>{product.productOwnerName}</Td>
-                <Td className="table-developer">{product.Developers}</Td>
+                <Td className="table-developer">
+                  {product.Developers.map((developer, index) => (
+                    <div key={index}>{developer}</div>
+                  ))}
+                </Td>
                 <Td>{product.startDate}</Td>
                 <Td>{product.methodology}</Td>
               </Tr>

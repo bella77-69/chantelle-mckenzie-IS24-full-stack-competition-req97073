@@ -6,6 +6,7 @@ import ProductView from "./pages/ProductView/ProductView";
 import ProductList from "./pages/ProductList/ProductList";
 import EditProduct from "./components/EditProduct/EditProduct";
 import DeleteProduct from "./components/DeleteProduct/DeleteProduct";
+import SearchHome from "./pages/Search/SearchHome";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route exact path="/product-list" component={ProductList} />
         <Route exact path="/edit/:productId" component={EditProduct} />
         <Route exact path="/delete/:productId" component={DeleteProduct} />
+        <Route exact path="/search" component={SearchHome} />
       </Switch>
     </Router>
   );

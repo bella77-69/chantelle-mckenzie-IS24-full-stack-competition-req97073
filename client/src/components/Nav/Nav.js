@@ -33,6 +33,9 @@ export default function Header() {
               <NavLink href="/product-view" className="nav-bar">
                 Add Product
               </NavLink>
+              <NavLink href="/search" className="nav-bar">
+                Search
+              </NavLink>
             </Nav>
           </Navbar.Collapse>
         </Container>

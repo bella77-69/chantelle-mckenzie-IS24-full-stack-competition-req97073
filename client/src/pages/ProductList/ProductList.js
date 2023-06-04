@@ -29,25 +29,29 @@ function ProductList(props) {
         <Table>
           <Thead className="table-header">
             <Tr>
-              <Th>Product Name</Th>
-              <Th>Scrum Master</Th>
-              <Th>Product Owner</Th>
-              <Th>Developers</Th>
-              <Th>Start Date</Th>
-              <Th>Methodology</Th>
-              <Th>Actions</Th>
+              <Th className="column-width-20">Product Name</Th>
+              <Th className="column-width-15">Scrum Master</Th>
+              <Th className="column-width-15">Product Owner</Th>
+              <Th className="column-width-15">Developers</Th>
+              <Th className="column-width-10">Start Date</Th>
+              <Th className="column-width-15">Methodology</Th>
+              <Th className="column-width-10">Actions</Th>
             </Tr>
           </Thead>
           <Tbody>
             {product.map((product) => (
               <Tr key={product.productId}>
-                <Td>{product.productName}</Td>
-                <Td>{product.scrumMasterName}</Td>
-                <Td>{product.productOwnerName}</Td>
-                <Td>{product.Developers}</Td>
-                <Td>{product.startDate}</Td>
-                <Td>{product.methodology}</Td>
-                <Td>
+                <Td className="column-width-20">{product.productName}</Td>
+                <Td className="column-width-15">{product.scrumMasterName}</Td>
+                <Td className="column-width-15">{product.productOwnerName}</Td>
+                <Td className="column-width-15">
+                  {product.Developers.map((developer, index) => (
+                    <div key={index}>{developer}</div>
+                  ))}
+                </Td>
+                <Td className="column-width-10">{product.startDate}</Td>
+                <Td className="column-width-15">{product.methodology}</Td>
+                <Td className="column-width-10">
                   <div className="btn-row">
                     <button
                       className="btn btn-danger"
