@@ -1,5 +1,5 @@
 <h1 align="center">
-# Chantelle Mckenzie - IS24-full-stack-competition-req97073
+# IS24-full-stack-competition-req97073
 </h1>
 
 <h3 align='left'>
